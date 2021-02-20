@@ -84,12 +84,14 @@ const sendMail = async (link, id, availabilityStatus) => {
     html: `<h1>Availability status of item ${id} has changed!</h1><p><b>New status:</b> ${availabilityStatus}</p><p><b>Link to an item:</b> ${link}</p>`, // html body
   })
 
+  console.log(
+    `Availability status of this item has changed: ${link}\nSending email...`
+  )
+
   console.log("Message sent: %s", info.messageId)
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
 
 const getRawAvailabilityStatus = html => {
@@ -115,11 +117,6 @@ const main = async () => {
     let availabilityStatus = getRawAvailabilityStatus(html)
     console.log(BASE_URL + links[i], "\n", availabilityStatus, "\n\n")
     if (availabilityStatus !== STATUS_INAVAILABLE) {
-      console.log(
-        `Availability status of this item has changed: ${
-          BASE_URL + links[i]
-        }\nSending email...`
-      )
       sendMail(BASE_URL + links[i], id, availabilityStatus)
     }
   })

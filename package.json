@@ -1,0 +1,15 @@
+{
+  "name": "graphics_card_checker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "node-html-parser": "^2.1.0",
+    "nodemailer": "^6.4.18"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
